@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis LUNA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quiz-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .logout-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="logout()">Keluar & Kembali</button>
+
+    <div class="quiz-page">
+        <div class="container">
+            <h2 class="section-title">Uji Wawasan Luna Anda</h2>
+            <div class="quiz-container" id="quiz-box" style="margin: 0 auto; display: block;">
+                <div id="question-container">
+                    <p class="quiz-question" id="question">Memuat pertanyaan...</p>
+                    <div class="quiz-options" id="options"></div>
+                </div>
+                <div id="result-container" style="display: none; text-align: center;">
+                    <h3 id="score-text"></h3>
+                    <p id="feedback-text"></p>
+                    <button class="action-btn" onclick="resetQuiz()">Ulangi Kuis</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+    <script>
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Kuis LUNA</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .login-card {
+            max-width: 400px;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .login-card input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .error-msg {
+            color: #ff4757;
+            margin-bottom: 1rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="glass-card login-card">
+            <h2>Akses Kuis LUNA</h2>
+            <p style="margin-bottom: 1.5rem; color: #ccc; font-size: 0.9rem;">Masukkan password untuk memulai uji
+                wawasan Anda.</p>
+
+            <p class="error-msg" id="errorMsg">Password salah. Silakan coba lagi.</p>
+
+            <input type="password" id="passwordInput" placeholder="Masukkan password...">
+            <button class="action-btn" onclick="checkPassword()" style="width: 100%;">Masuk ke Kuis</button>
+
+            <a href="index.html" class="back-link">← Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const pwd = document.getElementById('passwordInput').value;
+            // Password hardcode sederhana
+            if (pwd === 'luna123') {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'quiz.html';
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        // Allow pressing Enter to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+
+</html>
